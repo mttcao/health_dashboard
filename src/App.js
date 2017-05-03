@@ -1,21 +1,27 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {Ajax} from 'react-superagent';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+
+class App extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+            display_string: String("test")
+        };
+    }
+
+    render() {
+        return (
+            <div>
+                <Ajax url='https://sit-pricing-service.core-services.myob.com/public/health' method='get' >{
+                    ({error, response, done}) => !done ?
+                        <div></div> :
+                        <div>{JSON.stringify(response.status)}</div>
+                }</Ajax>
+            </div>
+        );
+    }
 }
 
 export default App;
