@@ -1,27 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
-import {Ajax} from 'react-superagent';
-
+// import {Ajax} from 'react-superagent';
+import { getAll } from './APIService';
 
 class App extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-            display_string: String("test")
-        };
+    constructor(props) {
+        super(props);
+        this.state = {apiStatus: 0};
     }
-
     render() {
         return (
             <div>
-                <Ajax url='https://sit-pricing-service.core-services.myob.com/public/health' method='get' >{
-                    ({error, response, done}) => !done ?
-                        <div></div> :
-                        <div>{JSON.stringify(response.status)}</div>
-                }</Ajax>
+                "test:" {this.state.apiStatus}
             </div>
         );
     }
+}
+
+function test() {
+    getAll().then(function (res) {
+        this.setState({apiStatus: res.status})
+    });
 }
 
 export default App;
