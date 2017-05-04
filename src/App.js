@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
-// import {Ajax} from 'react-superagent';
-import {getAll} from './APIService';
+import React from 'react';
 import './App.css';
+// import {Ajax} from 'react-superagent';
+var request = require('superagent-bluebird-promise');
 
 const initialState = {
   apiStatus: 0,
-
 };
+
 
 class App extends React.Component {
   constructor(props) {
@@ -14,16 +14,16 @@ class App extends React.Component {
     this.state = initialState;
   };
 
-  test = () => {
-    var self = this;
-    getAll().then((result) => {
+  checkStatus = () => {
+    request.get('https://sit-pricing-service.core-services.myob.com/public/health11')
+    .then((result) => {
       console.log(result.status)
-      self.setState({
+      this.setState({
         apiStatus: result.status
       })
     }).catch((error) => {
       console.log(error.status)
-      self.setState({
+      this.setState({
         apiStatus: error.status
       });
     })
@@ -31,8 +31,8 @@ class App extends React.Component {
 
   componentDidMount() {
     this.timerID = setInterval(
-      () => this.test(),
-      10000
+      () => this.checkStatus(),
+      5000
     );
   }
 
