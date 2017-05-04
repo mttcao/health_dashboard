@@ -1,3 +1,16 @@
+.dashboard {
+    width: 40%;
+    padding: 2%;
+    margin: 1%;
+    border: 3px solid slategrey;
+    font-family: sans-serif;
+}
+
+h1 {
+    font-family: sans-serif;
+    margin: 2%;
+}
+
 .success {
     color: limegreen;
 }

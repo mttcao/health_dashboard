@@ -15,7 +15,7 @@ const initialState = {
   colour: "",
 };
 
-class App extends React.Component {
+class Workfront extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
@@ -23,13 +23,13 @@ class App extends React.Component {
 
   checkStatus = () => {
     request.get("https://billing-sit.gem.myob.com/public/health")
-    .then((result) => {
-      // console.log(result.status)
-      this.setState({
-        apiStatus: result.status,
-        colour: "success"
-      })
-    }).catch((error) => {
+      .then((result) => {
+        // console.log(result.status)
+        this.setState({
+          apiStatus: result.status,
+          colour: "success"
+        })
+      }).catch((error) => {
       // console.log(error.status)
       this.setState({
         apiStatus: error.status,
@@ -55,10 +55,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        Billing: <span className={this.state.colour}>{this.state.apiStatus}</span>
+        Workfront Service: <span className={this.state.colour}>{this.state.apiStatus}</span>
       </div>
     );
   };
 }
 
-export default App;
+export default Workfront;

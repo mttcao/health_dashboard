@@ -15,21 +15,21 @@ const initialState = {
   colour: "",
 };
 
-class App extends React.Component {
+class PricingService extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
   };
 
   checkStatus = () => {
-    request.get("https://billing-sit.gem.myob.com/public/health")
-    .then((result) => {
-      // console.log(result.status)
-      this.setState({
-        apiStatus: result.status,
-        colour: "success"
-      })
-    }).catch((error) => {
+    request.get('https://sit-pricing-service.core-services.myob.com/public/health')
+      .then((result) => {
+        // console.log(result.status)
+        this.setState({
+          apiStatus: result.status,
+          colour: "success"
+        })
+      }).catch((error) => {
       // console.log(error.status)
       this.setState({
         apiStatus: error.status,
@@ -55,10 +55,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="dashboard">
-        Billing: <span className={this.state.colour}>{this.state.apiStatus}</span>
+        Pricing Service: <span className={this.state.colour}>{this.state.apiStatus}</span>
       </div>
     );
   };
 }
 
-export default App;
+export default PricingService;
