@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import PricingService from "./PricingService";
-import Workfront from "./Workfront";
+import EndPoints from "./EndPoints";
 
 ReactDOM.render(
   <div>
     <h1>Health Dashboard</h1>
-    <App />
-    <PricingService/>
-    <Workfront/>
+    <App serviceProps={'Billing'} urlProps={EndPoints['billing']} />
+    <App serviceProps={'Pricing Service'} urlProps={EndPoints['pricingService']} />
+    <App serviceProps={'Workfront Adaptor'} urlProps={EndPoints['workfrontAdaptor']} />
   </div>,
   document.getElementById('root')
 );
