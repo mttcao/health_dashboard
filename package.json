@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bluebird": "^3.5.0",
+    "@myob/myob-styles": "0.14.5",
+    "@myob/myob-widgets": "0.34.0",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-superagent": "^1.1.1",

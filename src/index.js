@@ -6,9 +6,8 @@ import EndPoints from "./EndPoints";
 ReactDOM.render(
   <div>
     <h1>Health Dashboard</h1>
-    <App serviceProps={'Billing'} urlProps={EndPoints['billing']} />
-    <App serviceProps={'Pricing Service'} urlProps={EndPoints['pricingService']} />
-    <App serviceProps={'Workfront Adaptor'} urlProps={EndPoints['workfrontAdaptor']} />
+    {EndPoints.map((endpoint, index)=> <App key={ index } serviceProps={ endpoint.serviceProps } urlProps={ endpoint.urlProps } />)}
+
   </div>,
   document.getElementById('root')
 );
